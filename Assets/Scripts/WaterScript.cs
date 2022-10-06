@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaterScript : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class WaterScript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Destroy(other.gameObject);
+
+            SceneManager.LoadScene("GameLose");
         }
     }
 }

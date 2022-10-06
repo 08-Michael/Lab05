@@ -13,7 +13,7 @@ public class PlayerMovementScript : MonoBehaviour
     public float totalcoins;
     public float timeleft;
 
-    private float TimerValue;
+    private float TimerValue = 50;
 
     public int timeRemaining;
 
