@@ -13,7 +13,7 @@ public class PlayerMovementScript : MonoBehaviour
     public float totalcoins;
     public float timeleft;
 
-    private float TimerValue = 50;
+    private float TimerValue = 0;
 
     public int timeRemaining;
 
@@ -22,7 +22,8 @@ public class PlayerMovementScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -56,7 +57,9 @@ public class PlayerMovementScript : MonoBehaviour
 
             CoinScore.GetComponent<Text>().text = "Score: " + CoinCount;
 
-            Destroy(collision.gameObject);           
+            Destroy(collision.gameObject);   
+            
+            
         }       
     }
 }
