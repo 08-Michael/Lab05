@@ -31,11 +31,6 @@ public class PlayerMovementScript : MonoBehaviour
             CoinCountUI.GetComponent<Text>().text = "CoinCollected: " + CoinCount;
 
             Destroy(collision.gameObject);
-        }
-
-        if(collision.gameObject.tag == "Water")
-        {
-            Destroy(collision.gameObject);
-        }
+        }       
     }
 }
