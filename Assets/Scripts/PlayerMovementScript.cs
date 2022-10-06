@@ -7,8 +7,7 @@ public class PlayerMovementScript : MonoBehaviour
 {
     public GameObject CoinCountUI;
 
-    int CoinCount;
-
+    int CoinCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +25,7 @@ public class PlayerMovementScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Coin")
         {
-            CoinCount++;
+            CoinCount += 10;
 
             CoinCountUI.GetComponent<Text>().text = "CoinCollected: " + CoinCount;
 
