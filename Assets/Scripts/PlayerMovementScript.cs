@@ -57,9 +57,9 @@ public class PlayerMovementScript : MonoBehaviour
 
             CoinScore.GetComponent<Text>().text = "Score: " + CoinCount;
 
-            Destroy(collision.gameObject);   
-            
-            
+            Destroy(collision.gameObject);
+
+            ParticleSystem.Play();
         }       
     }
 }
