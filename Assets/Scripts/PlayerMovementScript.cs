@@ -2,10 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovementScript : MonoBehaviour
 {
-    public GameObject CoinCountUI;
+    public GameObject CoinScore;    
+    public Text TimerText;
+
+    public float scorevalue;
+    public float totalcoins;
+    public float timeleft;
+
+    private float TimerValue;
+
+    public int timeRemaining;
 
     int CoinCount = 0;
 
@@ -18,7 +28,24 @@ public class PlayerMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timeleft -= Time.deltaTime;
+
+        timeRemaining = Mathf.FloorToInt(timeleft % 60);
+
+        TimerText.text = "Timer: " + timeRemaining.ToString();
+
+        if(scorevalue == totalcoins)
+        {
+            if(timeleft <= TimerValue)
+            {
+                SceneManager.LoadScene("GameWin");
+            }
+        }
+
+        else if(timeleft <= 0)
+        {
+            SceneManager.LoadScene("GameLose");
+        }
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -27,9 +54,9 @@ public class PlayerMovementScript : MonoBehaviour
         {
             CoinCount += 10;
 
-            CoinCountUI.GetComponent<Text>().text = "CoinCollected: " + CoinCount;
+            CoinScore.GetComponent<Text>().text = "Score: " + CoinCount;
 
-            Destroy(collision.gameObject);
+            Destroy(collision.gameObject);           
         }       
     }
 }
